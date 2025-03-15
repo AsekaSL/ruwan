@@ -59,7 +59,7 @@ const AdminPanel = () => {
           </div>
         </div>
       )}
-      <Link to="/ruwan" className="back-link">← Back to Home</Link>
+      <Link to="/" className="back-link">← Back to Home</Link>
     </div>
   );
 };
