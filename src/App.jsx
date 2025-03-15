@@ -109,7 +109,7 @@ const Home = () => {
               <p><i className="phone-icon"></i> Phone: 071 683 6765</p>
               <p><i className="phone-icon"></i> Phone: 076 078 65645</p>
               <p><i className="phone-icon"></i> Phone: 071 683 6766</p>
-              <p><i className="location-icon"></i> Location: No. 03, Mihirindu Mawatha, Mahara</p>
+              <a style={{textDecoration: 'none', color: 'inherit'}} href="https://maps.app.goo.gl/HejgekKon9joBYjAA"><i  className="location-icon"></i> Location: No. 03, Mihindu Mawatha, Mahara</a>
             </div>
           </div>
 
