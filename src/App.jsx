@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
-import profile from './profile.jpg';
+import profile from './profile2.jpg';
 
 // Admin Panel Component
 const AdminPanel = () => {
