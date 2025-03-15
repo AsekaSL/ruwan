@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 import profile from './profile.jpg';
 
@@ -59,7 +59,7 @@ const AdminPanel = () => {
           </div>
         </div>
       )}
-      <Link to="/" className="back-link">← Back to Home</Link>
+      <Link to="/ruwan" className="back-link">← Back to Home</Link>
     </div>
   );
 };
@@ -83,6 +83,8 @@ const Home = () => {
       alert('No active class link available. Please check back later.');
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <main className="landing-page">
@@ -112,7 +114,7 @@ const Home = () => {
           </div>
 
           <div className="social-links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+            <a onClick={() => navigate('/admin')} target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
               <i className="linkedin-icon"></i>
             </a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon github">
@@ -138,7 +140,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/ruwan" element={<Home />} />
-          <Route path="/ruwan/admin" element={<AdminPanel />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </div>
     </Router>
