@@ -117,7 +117,7 @@ const Home = () => {
             <a onClick={() => navigate('/admin')} target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
               <i className="linkedin-icon"></i>
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon github">
+            <a target="_blank" rel="noopener noreferrer" className="social-icon github">
               <i className="github-icon"></i>
             </a>
           </div>
