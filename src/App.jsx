@@ -137,7 +137,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/ruwan" element={<Home />} />
           <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </div>
