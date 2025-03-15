@@ -138,7 +138,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/ruwan" element={<Home />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/ruwan/admin" element={<AdminPanel />} />
         </Routes>
       </div>
     </Router>
