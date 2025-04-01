@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 import profile from './profile2.jpg';
+import axios from 'axios';
 
 // Admin Panel Component
-const AdminPanel = () => {
+const AdminPanel = ({addLink,deleteLink}) => {
   const [zoomLink, setZoomLink] = useState('');
   const [savedLink, setSavedLink] = useState('');
 
@@ -21,6 +22,7 @@ const AdminPanel = () => {
       alert('Please enter a valid Zoom link');
       return;
     }
+    addLink({link: zoomLink});
     localStorage.setItem('zoomLink', zoomLink);
     setSavedLink(zoomLink);
     setZoomLink('');
@@ -28,6 +30,7 @@ const AdminPanel = () => {
 
   const handleDeleteLink = () => {
     if (window.confirm('Are you sure you want to delete the current Zoom link?')) {
+      deleteLink();
       localStorage.removeItem('zoomLink');
       setSavedLink('');
     }
@@ -135,12 +138,52 @@ const Home = () => {
 
 // Main App Component
 function App() {
+
+  const [link,setLink] = useState('');
+
+  const getLink = () => {
+    axios.get("http://43.204.214.221:3001/link")
+    .then((response) => {
+      if(response.data[0] != undefined) {
+        setLink(response.data[0].link);
+        localStorage.setItem('zoomLink', response.data[0].link);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching link:", error);
+    })
+  };
+
+  const addLink = (data) => {
+    axios.post("http://43.204.214.221:3001/addlink",data)
+    .then((response) => {
+
+    })
+    .catch((error) => {
+      console.error("Error adding link:", error);
+    });
+  };
+
+  const deleteLink = () => {
+    axios.delete("http://43.204.214.221:3001/deletelink")
+    .then((response) => {
+
+    })
+    .catch((error) => {
+      console.error("Error adding link:", error);
+    });
+  };
+
+  useEffect(() => {
+    getLink();
+  },[]);
+
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin" element={<AdminPanel addLink={(data) => addLink(data)} deleteLink={deleteLink} />} />
         </Routes>
       </div>
     </Router>
