@@ -23,6 +23,7 @@ const AdminPanel = ({addLink,deleteLink}) => {
       return;
     }
     addLink({link: zoomLink});
+    
     localStorage.setItem('zoomLink', zoomLink);
     setSavedLink(zoomLink);
     setZoomLink('');
@@ -30,9 +31,10 @@ const AdminPanel = ({addLink,deleteLink}) => {
 
   const handleDeleteLink = () => {
     if (window.confirm('Are you sure you want to delete the current Zoom link?')) {
-      deleteLink();
+     
       localStorage.removeItem('zoomLink');
       setSavedLink('');
+      deleteLink();
     }
   };
 
@@ -139,7 +141,7 @@ const Home = () => {
 // Main App Component
 function App() {
 
-  const [link,setLink] = useState('');
+  
 
   const getLink = () => {
     axios.get("http://43.204.214.221:3001/link")
@@ -182,8 +184,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<AdminPanel addLink={(data) => addLink(data)} deleteLink={deleteLink} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminPanel addLink={(data) => addLink(data)} deleteLink={deleteLink} />} />
         </Routes>
       </div>
     </Router>
